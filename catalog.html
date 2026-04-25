@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Goró da Mansão | Digital Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Be+Vietnam+Pro:wght@300;400;500;700&amp;family=Playfair+Display:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #30302e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c96442;
+    }
+    .custom-ring {
+      box-shadow: inset 0 0 0 1px rgba(164, 139, 132, 0.1);
+    }
+    .ivory-serif {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-tertiary-fixed-variant": "#474745",
+                  "tertiary-fixed-dim": "#c9c6c4",
+                  "on-secondary": "#30302e",
+                  "outline": "#a48b84",
+                  "surface-container-highest": "#35352e",
+                  "surface": "#14140e",
+                  "on-tertiary": "#31302f",
+                  "on-tertiary-fixed": "#1c1c1a",
+                  "tertiary-fixed": "#e5e2e0",
+                  "secondary-fixed": "#e5e2df",
+                  "on-secondary-fixed-variant": "#474745",
+                  "on-error-container": "#ffdad6",
+                  "tertiary-container": "#92908f",
+                  "secondary": "#c8c6c3",
+                  "on-tertiary-container": "#2a2a28",
+                  "surface-container-lowest": "#0e0f09",
+                  "on-secondary-container": "#b7b5b2",
+                  "inverse-surface": "#e5e2d9",
+                  "secondary-fixed-dim": "#c8c6c3",
+                  "surface-variant": "#35352e",
+                  "surface-bright": "#3a3933",
+                  "on-secondary-fixed": "#1b1c1a",
+                  "primary-container": "#dc7350",
+                  "on-primary-fixed": "#390b00",
+                  "outline-variant": "#56423c",
+                  "on-primary-container": "#521400",
+                  "on-surface-variant": "#dcc1b8",
+                  "primary": "#ffb59d",
+                  "on-surface": "#e5e2d9",
+                  "primary-fixed-dim": "#ffb59d",
+                  "tertiary": "#c9c6c4",
+                  "error-container": "#93000a",
+                  "secondary-container": "#474745",
+                  "error": "#ffb4ab",
+                  "inverse-primary": "#9d4324",
+                  "surface-container-high": "#2a2a24",
+                  "on-primary-fixed-variant": "#7e2c0e",
+                  "on-background": "#e5e2d9",
+                  "background": "#14140e",
+                  "surface-tint": "#ffb59d",
+                  "inverse-on-surface": "#31312a",
+                  "surface-container": "#20201a",
+                  "surface-dim": "#14140e",
+                  "on-error": "#690005",
+                  "primary-fixed": "#ffdbd0",
+                  "on-primary": "#5d1800",
+                  "surface-container-low": "#1c1c16"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0px",
+                  "lg": "0px",
+                  "xl": "0px",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "lg": "48px",
+                  "margin": "32px",
+                  "xs": "4px",
+                  "xl": "80px",
+                  "gutter": "24px",
+                  "base": "8px",
+                  "md": "24px",
+                  "sm": "12px"
+          },
+          "fontFamily": {
+                  "h3": ["Space Grotesk"],
+                  "h2": ["Space Grotesk"],
+                  "body-md": ["Be Vietnam Pro"],
+                  "h1": ["Space Grotesk"],
+                  "body-lg": ["Be Vietnam Pro"],
+                  "label-caps": ["Space Grotesk"]
+          },
+          "fontSize": {
+                  "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                  "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar Implementation -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-stone-950 border-b border-stone-800">
+<div class="text-2xl font-black tracking-tighter text-stone-50">Goró da Mansão</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-h3 text-orange-700 border-b-2 border-orange-700 pb-1 uppercase tracking-widest text-sm font-bold" href="#">Shop</a>
+<a class="font-h3 text-stone-50 hover:text-orange-600 transition-colors uppercase tracking-widest text-sm font-bold" href="#">Collections</a>
+<a class="font-h3 text-stone-50 hover:text-orange-600 transition-colors uppercase tracking-widest text-sm font-bold" href="#">Limited</a>
+<a class="font-h3 text-stone-50 hover:text-orange-600 transition-colors uppercase tracking-widest text-sm font-bold" href="#">Vault</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<input class="bg-transparent border-b border-stone-800 text-xs font-label-caps focus:outline-none focus:border-orange-700 py-1 pr-8 text-on-surface" placeholder="SEARCH VAULT" type="text"/>
+<span class="material-symbols-outlined absolute right-0 top-0 text-stone-50 text-sm">search</span>
+</div>
+<button class="text-stone-50 hover:text-orange-700 transition-colors">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="text-stone-50 hover:text-orange-700 transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="fixed left-0 top-0 h-full w-64 border-r border-stone-800 bg-stone-900 hidden md:flex flex-col pt-24 pb-8 z-40">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 bg-on-secondary rounded-full overflow-hidden border border-stone-700">
+<img alt="User Profile" data-alt="close-up portrait of a stylish man in a dark turtleneck with moody studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClDTgTNVhNobmIvgLiiNTqsTeai8oqS6W85BROQCrMdWNxhH_oH7oUXDxFRAbCdnFlZ_60pezoLVU5QfmXlFDUdzJqXCZwNsr-o4Q9rvIpw-CJKJ_0FNh3Y22rtpbZqUSkJ_xyvuX2XMXemvFE1Y13xWJop89UPMSEgZvCTJeMAVlSov_4IRhd0-h_sbVP2qcJwo39rIQahtSxUbSiLDJeyklIeyA9yrbs_epMhJQZqywOMnOTQniA4b-raKR3zAwtRd5h0rIrqos"/>
+</div>
+<div>
+<p class="text-stone-50 font-bold text-sm">Member Access</p>
+<p class="text-stone-400 text-[10px] uppercase tracking-wider">Midnight Luxo Tier</p>
+</div>
+</div>
+<button class="w-full py-2 bg-stone-800 text-orange-700 text-[10px] font-bold uppercase tracking-widest hover:bg-orange-700 hover:text-stone-50 transition-all">Upgrade Status</button>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-orange-700 border-l-4 border-orange-700 bg-stone-800/50 px-6 py-3 font-label-caps text-sm" href="#">
+<span class="material-symbols-outlined">new_releases</span> New Arrivals
+      </a>
+<a class="flex items-center gap-4 text-stone-400 px-6 py-3 font-label-caps text-sm hover:bg-stone-800 hover:text-stone-50 transition-colors" href="#">
+<span class="material-symbols-outlined">local_bar</span> Spirits
+      </a>
+<a class="flex items-center gap-4 text-stone-400 px-6 py-3 font-label-caps text-sm hover:bg-stone-800 hover:text-stone-50 transition-colors" href="#">
+<span class="material-symbols-outlined">wine_bar</span> Wine
+      </a>
+<a class="flex items-center gap-4 text-stone-400 px-6 py-3 font-label-caps text-sm hover:bg-stone-800 hover:text-stone-50 transition-colors" href="#">
+<span class="material-symbols-outlined">liquor</span> Barware
+      </a>
+<a class="flex items-center gap-4 text-stone-400 px-6 py-3 font-label-caps text-sm hover:bg-stone-800 hover:text-stone-50 transition-colors" href="#">
+<span class="material-symbols-outlined">workspace_premium</span> Exclusives
+      </a>
+</nav>
+<div class="px-6 pt-8 border-t border-stone-800 space-y-2">
+<a class="flex items-center gap-4 text-stone-500 hover:text-stone-50 transition-colors text-xs font-label-caps" href="#">
+<span class="material-symbols-outlined text-sm">settings</span> Settings
+      </a>
+<a class="flex items-center gap-4 text-stone-500 hover:text-stone-50 transition-colors text-xs font-label-caps" href="#">
+<span class="material-symbols-outlined text-sm">help</span> Support
+      </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 min-h-screen px-8 pb-16">
+<!-- Hero Banner -->
+<header class="relative w-full h-[400px] mb-12 flex items-end p-12 overflow-hidden border border-stone-800 bg-stone-900">
+<div class="absolute inset-0 z-0">
+<img alt="Hero Background" class="w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="cinematic wide shot of a luxury dark lounge bar with warm amber lighting reflecting on crystal glassware and mahogany surfaces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB1HXJui-qHJq76TgNgbGzPlUqndo6wq322yEAjqBrnxf5umZNvteWGE1kY_xHFGm_avxG5qXp44eEICdpuVWfmbR2GrEIaHLyL6UIf6GJxkNdqc6DDnMabMkhV7MJXFeZ9vskrqfJPNh9YaVuWhvwe-wrpWdWMKfrVncRJl56gP-DtG3LMEETyBTvz2KNzzdYrwFzMIDWVyr40Gc7lnU-R2KLYcJowZfVgDIQ_Jxmp_w1vXf_wRjEqdGWxbq0AadQBnxN9xt2JtQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-2xl">
+<span class="text-primary font-label-caps text-xs tracking-[0.3em] uppercase mb-4 block">Summer Drop 2024</span>
+<h1 class="font-h1 text-on-surface mb-4 leading-none">NOCTURNAL CRAFTED SPIRITS</h1>
+<p class="text-secondary font-body-lg mb-8 max-w-lg">Engineered for the underground. High-integrity distillates infused with botanical adaptogens for clarity and restoration.</p>
+<button class="bg-primary-container text-on-primary-container px-8 py-3 font-label-caps text-sm tracking-widest hover:brightness-110 transition-all flex items-center gap-2">
+          EXPLORE THE COLLECTION <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</header>
+<!-- Product Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Product Card 1 -->
+<article class="bg-[#30302e] border border-stone-700/50 p-6 custom-ring group flex flex-col h-full">
+<div class="relative w-full aspect-square mb-6 overflow-hidden bg-stone-950 flex items-center justify-center p-8">
+<img alt="Product" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="minimalist studio photography of a premium dark glass spirit bottle with gold lettering on a concrete surface with sharp shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy9gj0c7U3p2PWuTRQKRVLs4SzdkMIrcv7XUC3WgXOudIBsX_BQGrQsztdS0NJJSEMJ7YHqfwB_Brdtjoix4v1lR_dNnQwolay5tM50Wjlbiv42-0tw0RRotMOCx2bL-2UAeJ4argb9BqWlvZLlgvHwL2qv9ngMTz7DJYQ5pyM8YnPknPjcsKJIxSu0tG4OgK55yO2xGQTPxP2T-LZ2YWVkWhkL4Qa0uVH9-sbl0v1ZIpix5BpUhTX0yfnO10mN4fd4QLvZIqQ3ro"/>
+<div class="absolute top-4 right-4">
+<span class="px-3 py-1 bg-primary-container text-on-primary-container text-[10px] font-bold tracking-widest">LIMITED EDITION</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h3 text-stone-50 mb-1">AETERNA BOTANIC</h3>
+<p class="text-orange-700 font-label-caps text-[10px] tracking-widest">INFUSED GIN | 42% ABV</p>
+</div>
+<span class="ivory-serif text-xl text-stone-50">$85.00</span>
+</div>
+<p class="text-stone-400 text-sm mb-6 flex-grow">A sophisticated blend of smoked juniper and Lion's Mane mushroom. Designed to sharpen focus while providing a smooth, velvety mouthfeel with notes of charred cedar.</p>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-orange-700 text-lg">health_and_safety</span>
+<span class="text-[10px] text-stone-500 font-label-caps">PROMOTES COGNITIVE CLARITY</span>
+</div>
+<button class="w-full py-4 bg-primary-container text-on-primary-container font-label-caps tracking-[0.2em] hover:bg-orange-600 transition-colors active:scale-95 duration-100">
+          ADD TO VAULT
+        </button>
+</article>
+<!-- Product Card 2 -->
+<article class="bg-[#30302e] border border-stone-700/50 p-6 custom-ring group flex flex-col h-full">
+<div class="relative w-full aspect-square mb-6 overflow-hidden bg-stone-950 flex items-center justify-center p-8">
+<img alt="Product" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="elegant close-up of a bourbon bottle with amber liquid illuminated by single spotlight on dark obsidian base" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8wCsOHsxE1-bv0jLT0PbyMj1ep1FDOD9AAmhSFgt83Nj_2-MMeh8n6h8Er6FzvBnazeeFrhNQcLYFpcM4_eCdjVSZVLOBOPMe2tRqf10hR0Y2icQLUo9CcWeewNm82PgwVjD-3sNX8nW_4f9nKy8w6fDAgCgTRuzNGmdb-_T_D5o46JyQ2i711sTvauUcjY3K-bhkyYvH46j3g4YTaZ4LwnJomLzcGQo1REG3IKLkhIU1kIXMHbVdz0Ru_a_dKtwr1ZghPZKNTOY"/>
+<div class="absolute top-4 right-4">
+<span class="px-3 py-1 border border-stone-600 text-stone-400 text-[10px] font-bold tracking-widest">RESTOCKING SOON</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h3 text-stone-50 mb-1">MIDNIGHT RYE</h3>
+<p class="text-orange-700 font-label-caps text-[10px] tracking-widest">SMALL BATCH | 46% ABV</p>
+</div>
+<span class="ivory-serif text-xl text-stone-50">$120.00</span>
+</div>
+<p class="text-stone-400 text-sm mb-6 flex-grow">Aged in charred obsidian-treated casks. Infused with magnesium and ashwagandha to support post-session relaxation without the fog. Dark chocolate and spice finish.</p>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-orange-700 text-lg">nightlight</span>
+<span class="text-[10px] text-stone-500 font-label-caps">OPTIMIZED FOR RECOVERY</span>
+</div>
+<button class="w-full py-4 bg-primary-container text-on-primary-container font-label-caps tracking-[0.2em] hover:bg-orange-600 transition-colors active:scale-95 duration-100">
+          ADD TO VAULT
+        </button>
+</article>
+<!-- Product Card 3 -->
+<article class="bg-[#30302e] border border-stone-700/50 p-6 custom-ring group flex flex-col h-full">
+<div class="relative w-full aspect-square mb-6 overflow-hidden bg-stone-950 flex items-center justify-center p-8">
+<img alt="Product" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="macro shot of a luxury tequila bottle with intricate geometric glass textures and platinum silver cap" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzkow_InfGZWOZFdtz1QsO8A8-Md_b2_I9QXCJXc040XzTEQKJPAqsA-45gyTXpBN5NF4XM4iro__WT0_ymZt75ZfjsmaHBESikJE8bTDdQn9Hj0h7Qh0Cpom6RCTm1eU8h2-bx0mUzhvXOQVWroD15LQb1cVmvA8WRCn8TLJNiqXsIGVfaj2dD_O7rbvbIJAGaSAPhH1DWHvMdAivp4tvvrUjgf-_QJj9j_4-3GFuOtnk4nWhR43Gb8OOVnr0KmhiiDK4bm8e0q4"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-h3 text-stone-50 mb-1">ONYX AGAVE</h3>
+<p class="text-orange-700 font-label-caps text-[10px] tracking-widest">EXTRA AÑEJO | 40% ABV</p>
+</div>
+<span class="ivory-serif text-xl text-stone-50">$215.00</span>
+</div>
+<p class="text-stone-400 text-sm mb-6 flex-grow">Single-estate agave filtered through volcanic rock. Sensory profile of roasted vanilla, sea salt, and ancient citrus. Enhanced with electrolytes for superior hydration.</p>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-orange-700 text-lg">bolt</span>
+<span class="text-[10px] text-stone-500 font-label-caps">ELECTROLYTE ENHANCED</span>
+</div>
+<button class="w-full py-4 bg-primary-container text-on-primary-container font-label-caps tracking-[0.2em] hover:bg-orange-600 transition-colors active:scale-95 duration-100">
+          ADD TO VAULT
+        </button>
+</article>
+</section>
+<!-- Bento Section -->
+<section class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="md:col-span-2 h-[300px] bg-stone-900 border border-stone-800 p-8 flex flex-col justify-end relative overflow-hidden">
+<img alt="Bento 1" class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="creative overhead shot of vibrant cocktails with botanical garnishes and crystal clear ice cubes on a textured black surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZe2DwoGg4KdWHx50ABxuJRvksvp1HoPz-XAgn8_4Xne-P2r_Q_bfPTQTb8DkaG9qjTATYpLEcD0iCVbaKL9-skufq6N_llI25Sir78_f8mQPFVZzqgxjpkJwzAesaIfvrq7BWFCD0UK1K8dP4qLpncdJsxe5IUAzODMykqdWdaSd4alryTKC3G5bYxKh3FqHj4usjWDmf6FbFAwBOrcOlV0VoF7Hgo_yu0EiVmFSdZx1zVbkjdua1_odA8RF3iy-GpCkaJbqMwaU"/>
+<h4 class="font-h2 text-stone-50 relative z-10">THE VAULT ACCESS</h4>
+<p class="text-stone-400 text-sm relative z-10">Exclusive drops for Luxo Tier members. Access the unreleased lab samples.</p>
+</div>
+<div class="h-[300px] bg-[#30302e] border border-stone-700 p-8 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-orange-700 text-5xl mb-4" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<h4 class="font-label-caps text-stone-50 tracking-widest">CERTIFIED PURITY</h4>
+<p class="text-[10px] text-stone-500 mt-2">Zero additives. Zero artificial colors. Just pure botanical engineering.</p>
+</div>
+<div class="h-[300px] bg-primary-container p-8 flex flex-col justify-between">
+<div class="material-symbols-outlined text-on-primary-container text-4xl">local_shipping</div>
+<div>
+<h4 class="font-h3 text-on-primary-container leading-tight">GLOBAL NOCTURNAL DELIVERY</h4>
+<p class="text-on-primary-container/80 text-xs mt-2 uppercase font-bold tracking-wider">Secure. Insured. Discreet.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-black border-t border-stone-900">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="text-sm font-bold text-stone-50 font-['Space_Grotesk']">GORÓ DA MANSÃO</div>
+<p class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-stone-500">© 2024 GORÓ DA MANSÃO. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-50 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-50 transition-opacity" href="#">Terms of Service</a>
+<a class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-50 transition-opacity" href="#">Shipping</a>
+<a class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-stone-50 transition-opacity" href="#">Returns</a>
+</div>
+<div class="flex gap-4">
+<a class="text-stone-500 hover:text-orange-700 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">share</span>
+</a>
+<a class="text-stone-500 hover:text-orange-700 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">public</span>
+</a>
+</div>
+</footer>
+</body></html>
