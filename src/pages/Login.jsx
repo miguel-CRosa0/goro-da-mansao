@@ -20,7 +20,7 @@ const Login = () => {
       await login(username, password);
       navigate(from, { replace: true });
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed');
+      setError(err.response?.data?.error || 'Falha no login');
     }
   };
 
@@ -32,8 +32,8 @@ const Login = () => {
             <span className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white text-sm font-body">GM</span>
             Goró da Mansão
           </Link>
-          <h1 className="text-4xl font-display text-near-black dark:text-ivory mb-2">Welcome back</h1>
-          <p className="text-olive-gray dark:text-warm-silver font-body">Sign in to access the elite mansion vibes.</p>
+          <h1 className="text-4xl font-display text-near-black dark:text-ivory mb-2">Bem-vindo de volta</h1>
+          <p className="text-olive-gray dark:text-warm-silver font-body">Entre para acessar o lifestyle da Mansão.</p>
         </div>
 
         <div className="card-claude bg-ivory dark:bg-dark-surface shadow-whisper">
@@ -45,7 +45,7 @@ const Login = () => {
             )}
             
             <div>
-              <label className="block text-sm font-medium text-olive-gray dark:text-warm-silver mb-2 font-body">Username</label>
+              <label className="block text-sm font-medium text-olive-gray dark:text-warm-silver mb-2 font-body">Usuário</label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-gray">
                   <UserIcon size={18} />
@@ -62,7 +62,7 @@ const Login = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-olive-gray dark:text-warm-silver mb-2 font-body">Password</label>
+              <label className="block text-sm font-medium text-olive-gray dark:text-warm-silver mb-2 font-body">Senha</label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-gray">
                   <Lock size={18} />
@@ -79,16 +79,16 @@ const Login = () => {
             </div>
 
             <button type="submit" className="btn-terracotta w-full flex items-center justify-center gap-2 font-body py-4">
-              Sign in
+              Entrar
               <ArrowRight size={18} />
             </button>
           </form>
 
           <div className="mt-8 pt-8 border-t border-border-cream dark:border-white/10 text-center">
             <p className="text-sm text-olive-gray dark:text-warm-silver font-body">
-              Don't have an account?{' '}
+              Não tem uma conta?{' '}
               <Link to="/register" className="text-primary font-semibold hover:underline">
-                Create one now
+                Crie uma agora
               </Link>
             </p>
           </div>

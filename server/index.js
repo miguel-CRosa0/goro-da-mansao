@@ -20,7 +20,9 @@ db.exec(`
 
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+    email TEXT,
+    profile_image TEXT
   );
 
 
@@ -34,6 +36,16 @@ db.exec(`
     tag TEXT
   );
 `);
+
+// Migration: Ensure columns exist
+const tableInfo = db.prepare('PRAGMA table_info(users)').all();
+const columns = tableInfo.map(c => c.name);
+if (!columns.includes('email')) {
+  try { db.prepare('ALTER TABLE users ADD COLUMN email TEXT').run(); } catch(e) {}
+}
+if (!columns.includes('profile_image')) {
+  try { db.prepare('ALTER TABLE users ADD COLUMN profile_image TEXT').run(); } catch(e) {}
+}
 
 // Seed Data (if empty)
 const row = db.prepare('SELECT count(*) as count FROM products').get();
@@ -93,7 +105,7 @@ app.post('/api/auth/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const info = db.prepare('INSERT INTO users (username, password) VALUES (?, ?)').run(username, hashedPassword);
     const token = jwt.sign({ id: info.lastInsertRowid, username }, JWT_SECRET);
-    res.json({ token, user: { id: info.lastInsertRowid, username } });
+    res.json({ token, user: { id: info.lastInsertRowid, username, email: null, profile_image: null } });
   } catch (err) {
     console.error('Registration error:', err);
     res.status(400).json({ error: err.message || 'Username already exists' });
@@ -110,11 +122,40 @@ app.post('/api/auth/login', async (req, res) => {
   }
 
   const token = jwt.sign({ id: user.id, username }, JWT_SECRET);
-  res.json({ token, user: { id: user.id, username } });
+  res.json({ token, user: { id: user.id, username, email: user.email, profile_image: user.profile_image } });
 });
 
 app.get('/api/auth/me', authenticateToken, (req, res) => {
-  res.json(req.user);
+  const user = db.prepare('SELECT id, username, email, profile_image FROM users WHERE id = ?').get(req.user.id);
+  res.json(user);
+});
+
+app.put('/api/auth/profile', authenticateToken, async (req, res) => {
+  const { username, email, password, profile_image } = req.body;
+  const userId = req.user.id;
+
+  try {
+    let updateQuery = 'UPDATE users SET username = ?, email = ?, profile_image = ?';
+    let params = [username, email, profile_image];
+
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      updateQuery += ', password = ?';
+      params.push(hashedPassword);
+    }
+
+    updateQuery += ' WHERE id = ?';
+    params.push(userId);
+
+    db.prepare(updateQuery).run(...params);
+    
+    const updatedUser = db.prepare('SELECT id, username, email, profile_image FROM users WHERE id = ?').get(userId);
+    const token = jwt.sign(updatedUser, JWT_SECRET);
+    
+    res.json({ token, user: updatedUser });
+  } catch (err) {
+    res.status(400).json({ error: 'Erro ao atualizar perfil: ' + err.message });
+  }
 });
 
 // Products API

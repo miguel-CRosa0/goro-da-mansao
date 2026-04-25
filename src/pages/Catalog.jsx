@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Plus, Filter } from 'lucide-react'
+import { useCart } from '../context/CartContext'
 
 const Catalog = () => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const location = useLocation()
   const navigate = useNavigate()
+  const { addToCart } = useCart()
 
   const queryParams = new URLSearchParams(location.search)
   const categoryFilter = queryParams.get('category')
@@ -32,26 +34,27 @@ const Catalog = () => {
   }, [categoryFilter])
 
   const handleBuyNow = (product) => {
-    navigate('/checkout', { state: { product } })
+    addToCart(product)
+    // Optional: show a notification or feedback
   }
 
   return (
-    <div className="bg-parchment dark:bg-near-black min-h-screen pt-32 pb-32 px-6 transition-colors duration-300">
+    <div className="min-h-screen pt-32 pb-32 px-6 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <header className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20 border-b border-border-cream dark:border-dark-surface pb-12">
           <div className="max-w-2xl">
-            <h1 className="font-display text-near-black dark:text-ivory mb-6">The Vault</h1>
+            <h1 className="font-display text-near-black dark:text-ivory mb-6">O Cofre</h1>
             <p className="text-[19px] text-olive-gray dark:text-warm-silver font-body leading-relaxed">
-              Explore our exclusive drops and limited editions. Every Goró is a piece of digital art thoughtfully engineered for physical performance.
+              Explore nossos drops exclusivos e edições limitadas. Cada Goró é uma obra de arte digital pensada para performance física.
             </p>
           </div>
           <div className="flex gap-5 font-body">
             <button className="flex items-center gap-2 px-5 py-2.5 bg-ivory dark:bg-dark-surface border border-border-cream dark:border-dark-surface rounded-xl text-[14px] font-medium text-near-black dark:text-ivory hover:bg-white dark:hover:bg-near-black transition-all shadow-sm">
               <Filter size={18} className="text-stone-gray" />
-              Filter
+              Filtrar
             </button>
             <div className="text-[13px] font-bold text-near-black dark:text-ivory uppercase tracking-[0.2em] border-b-2 border-primary pb-1 self-center">
-              {categoryFilter || 'All Drops'}
+              {categoryFilter || 'Todos os Drops'}
             </div>
           </div>
         </header>
@@ -109,8 +112,8 @@ const Catalog = () => {
               <div className="w-20 h-20 rounded-2xl bg-ivory dark:bg-dark-surface flex items-center justify-center text-stone-gray mb-6 group-hover:scale-110 transition-transform duration-500">
                 <Plus size={36} className="opacity-40" />
               </div>
-              <div className="text-[11px] font-bold text-stone-gray uppercase tracking-[0.2em] mb-2 font-body">CLASSIFIED</div>
-              <div className="text-2xl font-display font-medium text-stone-gray/60 dark:text-stone-gray italic">Coming Soon</div>
+              <div className="text-[11px] font-bold text-stone-gray uppercase tracking-[0.2em] mb-2 font-body">CLASSIFICADO</div>
+              <div className="text-2xl font-display font-medium text-stone-gray/60 dark:text-stone-gray italic">Em Breve</div>
             </div>
           </div>
         )}

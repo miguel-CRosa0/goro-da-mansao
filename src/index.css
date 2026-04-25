@@ -4,7 +4,7 @@
   /* Claude Inspired Color Palette (Matching Original Project) */
   --color-primary: #c96442; /* Terracotta */
   --color-primary-hover: #b0573a;
-  --color-parchment: #f5f4ed;
+  --color-parchment: #ffffff;
   --color-ivory: #faf9f5;
   --color-near-black: #141413;
   --color-olive-gray: #5e5d59;
@@ -22,6 +22,9 @@
   --shadow-whisper: 0 4px 24px rgba(0,0,0,0.05);
   --shadow-ring: 0 0 0 1px #d1cfc5;
   --shadow-ring-dark: 0 0 0 1px #30302e;
+
+  /* Dark Mode Strategy */
+  --dark-mode: selector(.dark);
 }
 
 @layer base {
@@ -32,12 +35,19 @@
   }
 
   body {
-    background-color: var(--color-parchment);
+    background-color: #ffffff;
     color: var(--color-olive-gray);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
     transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Force Light Mode if .dark class is not present */
+  html:not(.dark), 
+  html:not(.dark) body {
+    background-color: #ffffff !important;
+    color: var(--color-olive-gray) !important;
   }
 
   .dark body {
@@ -50,6 +60,15 @@
     font-family: var(--font-display);
     font-weight: 500;
     line-height: 1.1;
+  }
+
+  html:not(.dark) h1, 
+  html:not(.dark) h2, 
+  html:not(.dark) h3, 
+  html:not(.dark) h4, 
+  html:not(.dark) h5, 
+  html:not(.dark) h6 {
+    color: var(--color-near-black) !important;
   }
 
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
@@ -84,8 +103,8 @@
 }
 
 .btn-secondary {
-  @apply bg-[#e8e6dc] text-[#4d4c48] px-6 py-2.5 rounded-lg font-medium transition-all duration-200 
-         hover:-translate-y-0.5 active:translate-y-0 shadow-sm inline-flex items-center gap-2;
+  @apply bg-[#e1dfd3] text-[#141413] px-6 py-2.5 rounded-lg font-medium transition-all duration-200 
+         hover:bg-[#d4d1bc] hover:-translate-y-0.5 active:translate-y-0 shadow-sm inline-flex items-center gap-2;
 }
 
 .dark .btn-secondary {
@@ -101,7 +120,7 @@
 }
 
 .input-claude {
-  @apply w-full px-4 py-3 bg-[#faf9f5] border border-[#f0eee6] rounded-xl outline-none transition-all
+  @apply w-full pl-12 pr-4 py-3 bg-[#faf9f5] border border-[#f0eee6] rounded-xl outline-none transition-all
          focus:border-[#c96442] focus:ring-4 focus:ring-[#c96442]/10 text-[#141413];
 }
 
